@@ -1,0 +1,218 @@
+hemel Freeware License
+Version 1.2, 5 November 2026
+
+Copyright (c) 2026 CRISTEA MARIUS-SIMION, carrying on business as
+CRISTEA MARIUS-SIMION PFA. All rights reserved.
+
+The "Licensor" is CRISTEA MARIUS-SIMION, carrying on business as
+CRISTEA MARIUS-SIMION PFA. Lawful successors to the Licensor's rights
+are subject to section 10.
+
+This license covers the hemel and hemel-mcp programs and the files
+distributed with them (together, the "Software"). Third-party components
+and the published lexicons are subject to sections 5 and 6 respectively.
+"You" means the individual or legal entity exercising rights under this
+license. Contact: hello@hemel.app.
+
+1. Use.
+
+   Subject to this license, the Licensor grants you a non-exclusive,
+   worldwide, royalty-free license to install, run and use the Software
+   for personal or commercial purposes, on any number of machines, and
+   to copy and redistribute it as section 2 permits.
+
+   Commercial use includes internal business use, including use by your
+   employees and contractors acting on your behalf, and using the
+   Software as a tool in paid professional work, including work for
+   clients. Supplying copies or access to the Software to others is
+   subject to sections 2 and 3.
+
+   This grant applies to the version supplied with this license and
+   continues for the duration of copyright in that version, unless your
+   rights end under section 9. Receiving or using a copy does not transfer
+   ownership of the Software or its copyright to you.
+
+2. Passing it on.
+
+   You may copy and redistribute unmodified copies of the Software free
+   of charge, together with this license and all accompanying third-party
+   notices and license texts, including THIRD-PARTY-NOTICES.txt. You must
+   also comply with section 5.
+
+   Changing only the outer archive or package format is permitted if the
+   Software and the contents of its license files and notices remain
+   unchanged.
+
+   Each recipient receives permission directly from the Licensor under
+   this license. You may not replace this license or impose additional
+   restrictions on the recipient's rights in the Software.
+
+3. Restrictions and permitted services.
+
+   Except to the extent permitted by applicable law that cannot be
+   excluded or restricted by agreement, by sections 5 or 6, or by a
+   separate written agreement with the Licensor, you may not:
+
+   (a) sell, rent or lease copies of the Software, or charge for its
+       download, distribution, licensing or use;
+   (b) supply the Software as a component of a paid product, bundle or
+       subscription, even if the Software is described as free within
+       that offering, except for the optional services permitted below;
+   (c) charge others for hosted, managed or remote access to the Software
+       or its functionality, including through an API or MCP interface,
+       whether charged separately or included in another paid offering;
+   (d) modify the Software or create works based on it;
+   (e) decompile, disassemble or reverse engineer the Software, extract
+       its program code, or otherwise attempt to reconstruct its
+       proprietary source code; or
+   (f) remove or change any copyright or license notice in the Software.
+
+   You may charge for your own genuine, separately identified, optional
+   installation, configuration, training or support services. You must
+   make clear that the Software itself is free of charge and that the
+   fee is solely for your service. Purchasing a service must not be a
+   condition of obtaining or continuing to use the Software. This
+   exception does not permit paid hosted access or a disguised charge
+   for the Software, its distribution or its use.
+
+   Using the Software as a tool in your own business or professional
+   work remains permitted. A fee for that work does not by itself become
+   a fee for the Software, provided you are not selling copies, licenses
+   or access to the Software's functionality to your customers.
+
+   Nothing in this license limits rights that cannot lawfully be
+   excluded or restricted, including applicable rights to make necessary
+   backup copies, observe, study or test the Software, or carry out
+   decompilation or other acts permitted by mandatory applicable law.
+
+4. Source code.
+
+   This license does not grant general access to the Licensor's original
+   proprietary source code. This is subject to applicable law and the
+   rights and material-supply obligations in section 5. Supplying
+   application materials for those purposes does not otherwise grant
+   unrestricted rights to the Licensor's proprietary code.
+
+5. Third-party components and LGPL compliance.
+
+   The Software includes components identified in THIRD-PARTY-NOTICES.txt.
+   Each component remains subject to its own license. Those terms prevail
+   over conflicting terms of this license for that component and any
+   rights they require for the combined work. Applicable third-party
+   licenses and required notices must accompany each distributed copy
+   of the Software.
+
+   The bundled Bun runtime includes components under the GNU Library or
+   Lesser General Public License (LGPL). For combinations covered by the
+   LGPL, and to the extent that license requires, you may modify the
+   Software for your own use, replace or modify the covered libraries,
+   relink the Software with them, and reverse engineer the Software to
+   debug such modifications.
+
+   For each version distributed by the Licensor, the materials required
+   by the applicable LGPL to exercise those rights are published with
+   that version's release, next to its binaries: the Software's bundled
+   program code, in a form that can be relinked with a modified runtime,
+   and the instructions for that process, naming the exact version and
+   source commits of the runtime and of its LGPL-covered libraries,
+   including any modifications, and the steps to rebuild the runtime and
+   relink the Software. Application materials may be supplied in object
+   rather than original source form where the LGPL permits. Where the
+   published materials, or the source they name, are no longer available,
+   the Licensor supplies them on request to hello@hemel.app, without
+   charge. Neither the published materials nor this offer otherwise
+   grant rights to the Licensor's proprietary development sources.
+
+   You may copy and provide unchanged application materials published or
+   supplied under this section with redistributions of the Software
+   permitted by section 2, for the purpose of satisfying the applicable
+   LGPL requirements. Third-party materials remain governed by their own
+   licenses.
+
+   The published materials and the offer are available to any recipient
+   of that version, including a recipient of a redistributed copy. They
+   remain available throughout the Licensor's distribution of that
+   version and for at least three years after the Licensor last
+   distributes it.
+
+   Redistributors must also comply with the applicable third-party
+   licenses. They must accompany redistributed copies with the required
+   notices and licenses and satisfy the applicable source and relinking
+   material requirements, whether by supplying those materials or using
+   another permitted method. Passing on this offer alone does not
+   automatically satisfy their independent obligations.
+
+6. Lexicons.
+
+   The record schemas published under the app.hemel namespace (the
+   lexicons) are not covered by sections 2 to 4. Anyone may use, copy and
+   publish them to read and write hemel records.
+
+7. No warranty.
+
+   To the extent the law allows, the Software is provided "as is",
+   without warranty of any kind, express or implied, including the
+   warranties of merchantability, fitness for a particular purpose
+   and non-infringement.
+
+8. No liability.
+
+   To the extent the law allows, the Licensor is not liable for any claim,
+   damages or other liability arising from the Software or its use.
+
+9. End of your rights.
+
+   To the extent the law allows, your rights under this license end
+   automatically if you breach its terms. You must then stop using,
+   copying and redistributing the Software to the extent those acts
+   require permission under this license.
+
+   Ending your rights does not end the rights of other recipients who
+   comply with this license. Rights arising independently under
+   applicable law or third-party licenses remain governed by that law
+   or those licenses.
+
+10. This version, other licenses and transfers.
+
+    This license applies only to the version of the Software with which
+    it is supplied. To the extent the Licensor owns or controls the
+    relevant rights, the Licensor may offer the same version or future
+    versions under additional or different terms, including paid,
+    subscription or open-source terms, and may offer paid services.
+
+    Any such change does not revoke, narrow or make payable the rights
+    already granted to you under this license. Publishing a revised
+    license does not by itself change the license applying to a copy
+    you previously received. Your existing rights remain subject to
+    compliance with this license and section 9.
+
+    The Licensor may transfer economic rights in the Software to another
+    individual or entity, subject to applicable law. Any such transfer
+    must respect the grants already made under this license, and lawful
+    successors to those rights must honor those grants. A transfer does
+    not by itself release the Licensor from outstanding obligations
+    under applicable law, this license or third-party licenses.
+
+    A transfer of ownership requires a separate legally effective
+    transaction; this license does not itself transfer ownership.
+
+    This license does not entitle you to future releases, updates,
+    maintenance, support or hosted services. Any separately agreed
+    rights to those items remain governed by the relevant agreement.
+
+11. Governing law.
+
+    This license is governed by the law of Romania. To the extent the
+    law allows, disputes concerning it are brought before the courts
+    of the place where the Licensor has its professional or registered
+    office. Nothing in this section deprives a consumer of mandatory
+    legal protections or rights to bring proceedings before courts
+    available under applicable law.
+
+12. Severability.
+
+    If any part of this license is found invalid or unenforceable, the
+    rest remains in force.
+
+All rights not expressly granted in this license are reserved by the
+Licensor or the respective third-party rights holders.
