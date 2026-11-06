@@ -12,8 +12,11 @@ With Homebrew, on macOS and Linux:
 
 ```sh
 brew tap nhack/hemel https://github.com/nhack/hemel
-brew install hemel
+brew install nhack/hemel/hemel
 ```
+
+The full name trusts the formula on its own. To trust the whole tap instead, run
+`brew trust nhack/hemel` once; then `brew install hemel` works too.
 
 Or download the archive of your machine from the
 [releases page](https://github.com/nhack/hemel/releases): it holds `hemel`, `hemel-mcp`,
