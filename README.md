@@ -3,7 +3,22 @@
 hemel is a terminal client for Bluesky, built around code snippets. Its home is
 [hemel.app](https://hemel.app).
 
-This repository holds the releases and the public issue tracker. It holds no source code.
+This repository holds the releases, the Homebrew tap and the public issue tracker. It
+holds no source code.
+
+## Install
+
+With Homebrew, on macOS and Linux:
+
+```sh
+brew tap nhack/hemel https://github.com/nhack/hemel
+brew install hemel
+```
+
+Or download the archive of your machine from the
+[releases page](https://github.com/nhack/hemel/releases): it holds `hemel`, `hemel-mcp`,
+`LICENSE` and `THIRD-PARTY-NOTICES.txt`. Windows: run the `linux-x64` binary in WSL until
+native support lands.
 
 ## Feedback
 
