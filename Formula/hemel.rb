@@ -1,29 +1,29 @@
-# Written by the release pipeline of hemel for v0.1.0-beta.1; do not edit by hand.
+# Written by the release pipeline of hemel for v0.1.0-beta.2; do not edit by hand.
 class Hemel < Formula
   desc "Terminal client for Bluesky, built around code snippets"
   homepage "https://hemel.app"
-  version "0.1.0-beta.1"
+  version "0.1.0-beta.2"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.1/hemel-darwin-arm64.tar.gz"
-      sha256 "ba487ae778c22b1fd1e237bf999606723d6708792e552722ccbf6c66ce2f88cb"
+      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.2/hemel-0.1.0-beta.2-darwin-arm64.tar.gz"
+      sha256 "00e12f519b227b064bc5f8e24ce58a801e9bdeddc6f3e0e2fd43f814828246c9"
     end
     on_intel do
-      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.1/hemel-darwin-x64.tar.gz"
-      sha256 "24ec3bf1256c1819f9ba5ece43cf38837d6cc29228f947e8cfda8a9b65c9cccb"
+      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.2/hemel-0.1.0-beta.2-darwin-x64.tar.gz"
+      sha256 "71bec208c972fb237aff1b6173cdde395169eaa30a800c050d6b38edd1f8c21c"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.1/hemel-linux-arm64.tar.gz"
-      sha256 "8a8fe80ea98a39173fe42490e73886b47f0ac359cee5df73918bdb194f6527be"
+      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.2/hemel-0.1.0-beta.2-linux-arm64.tar.gz"
+      sha256 "d92cf58890aaa4d1474cee3e7baece93d32245198901a7d59b1218700ed69f9c"
     end
     on_intel do
-      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.1/hemel-linux-x64.tar.gz"
-      sha256 "a83dc9c57a346216034005bb766089db407ebdb3571c67089ddc576d5122e6c9"
+      url "https://github.com/nhack/hemel/releases/download/v0.1.0-beta.2/hemel-0.1.0-beta.2-linux-x64.tar.gz"
+      sha256 "d484321acd77965b08c7a36e05df220a9d0ee7283f71ecf2a8c9a05111520f89"
     end
   end
 
