@@ -1,0 +1,152 @@
+name: release
+
+# NOTE: TUI spec 13.8: this file runs in the public companion repository nhack/hemel and
+# builds the private source at a release tag; the source copy is the one that is edited.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The release tag on main of the source, v<version>
+        required: true
+        type: string
+      draft:
+        description: Make a draft release and push no formula
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  tag:
+    if: github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: nhack/atproto-cmd
+          ref: ${{ inputs.tag }}
+          token: ${{ secrets.HEMEL_SOURCE_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          path: companion-repository
+          persist-credentials: false
+      - run: cmp companion/.github/workflows/release.yml companion-repository/.github/workflows/release.yml
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+      - run: bun scripts/release.ts check-tag "$TAG"
+        env:
+          TAG: ${{ inputs.tag }}
+      - id: resolve
+        run: echo "sha=$(git rev-parse --verify "refs/tags/$TAG^{commit}")" >> "$GITHUB_OUTPUT"
+        env:
+          TAG: ${{ inputs.tag }}
+      - run: git merge-base --is-ancestor HEAD origin/main
+
+  build:
+    if: github.actor == github.repository_owner
+    needs: tag
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: darwin-arm64
+            os: macos-latest
+          - target: darwin-x64
+            os: macos-15-intel
+          - target: linux-x64
+            os: ubuntu-latest
+          - target: linux-arm64
+            os: ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: nhack/atproto-cmd
+          ref: ${{ needs.tag.outputs.sha }}
+          token: ${{ secrets.HEMEL_SOURCE_TOKEN }}
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+      - run: bun run build ${{ matrix.target }}
+      - run: bun test packages/tui/test/binary.test.ts
+        env:
+          HEMEL_SMOKE_TARGET: ${{ matrix.target }}
+      - run: bun scripts/release.ts archive ${{ matrix.target }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: release-${{ matrix.target }}
+          path: dist/release/hemel-${{ matrix.target }}.tar.gz
+          retention-days: 1
+          if-no-files-found: error
+
+  publish:
+    if: github.actor == github.repository_owner
+    needs: [tag, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: nhack/atproto-cmd
+          ref: ${{ needs.tag.outputs.sha }}
+          token: ${{ secrets.HEMEL_SOURCE_TOKEN }}
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          pattern: release-*
+          path: dist/release
+          merge-multiple: true
+      - id: assemble
+        run: bun scripts/release.ts assemble --tag "$TAG" >> "$GITHUB_OUTPUT"
+        env:
+          TAG: ${{ inputs.tag }}
+      - run: ls -l dist/release dist/release/Formula
+      - name: create the release
+        run: |
+          flags=()
+          if [ "$PRERELEASE" = true ]; then flags+=(--prerelease); fi
+          if [ "$DRAFT" = true ]; then flags+=(--draft); fi
+          gh release create "$TAG" --repo "$REPOSITORY" --title "hemel $VERSION" \
+            --notes-file dist/release/notes.md "${flags[@]}" \
+            dist/release/hemel-*.tar.gz dist/release/RELINK.md dist/release/app.hemel.snippet.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          DRAFT: ${{ inputs.draft }}
+          REPOSITORY: ${{ steps.assemble.outputs.repository }}
+          VERSION: ${{ steps.assemble.outputs.version }}
+          PRERELEASE: ${{ steps.assemble.outputs.prerelease }}
+      - name: push the formula and the license to the tap
+        if: ${{ !inputs.draft }}
+        run: |
+          gh auth setup-git
+          git clone --depth 1 "https://github.com/$REPOSITORY.git" tap
+          mkdir -p tap/Formula
+          cp dist/release/Formula/hemel.rb tap/Formula/hemel.rb
+          cp LICENSE tap/LICENSE
+          cd tap
+          git config user.name "hemel release"
+          git config user.email "$MAIL"
+          git add Formula/hemel.rb LICENSE
+          git commit -m "hemel $VERSION"
+          git push
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ steps.assemble.outputs.repository }}
+          VERSION: ${{ steps.assemble.outputs.version }}
+          MAIL: ${{ steps.assemble.outputs.mail }}
