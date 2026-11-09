@@ -19,8 +19,9 @@ The full name trusts the formula on its own. To trust the whole tap instead, run
 `brew trust nhack/hemel` once; then `brew install hemel` works too.
 
 Or download the archive of your machine from the
-[releases page](https://github.com/nhack/hemel/releases): it holds `hemel`, `hemel-mcp`,
-`LICENSE` and `THIRD-PARTY-NOTICES.txt`. Windows: run the `linux-x64` binary in WSL until
+[releases page](https://github.com/nhack/hemel/releases), `hemel-<version>-<target>.tar.gz`:
+it unpacks into one folder of the same name, holding `hemel`, `hemel-mcp`, `LICENSE` and
+`THIRD-PARTY-NOTICES.txt`. Windows: run the `linux-x64` binary in WSL until
 native support lands.
 
 ## Feedback
