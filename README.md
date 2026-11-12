@@ -3,6 +3,8 @@
 hemel is a terminal client for Bluesky, built around code snippets. Its home is
 [hemel.app](https://hemel.app).
 
+[![hemel in a terminal: a thread with a highlighted TypeScript snippet over the timeline](https://hemel.app/og.png)](https://hemel.app)
+
 This repository holds the releases, the Homebrew tap and the public issue tracker. It
 holds no source code.
 
